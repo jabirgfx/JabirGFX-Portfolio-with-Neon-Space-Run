@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Space Run — JABIRGFX</title>
+
+    <link rel="stylesheet" href="neon-space-run.css">
+</head>
+
+<body>
+
+    <main class="nsr-game">
+
+        <!-- HUD -->
+        <header class="nsr-hud">
+
+            <div class="nsr-brand">
+    <img src="assets/jabirgfx-logo.png" alt="JABIRGFX">
+</div>
+
+            <div class="nsr-stat">
+                <small>SCORE</small>
+                <strong id="nsrScore">0</strong>
+            </div>
+
+            <div class="nsr-stat">
+                <small>BEST</small>
+                <strong id="nsrBest">0</strong>
+            </div>
+
+            <div class="nsr-lives" id="nsrLives">
+                ❤️ ❤️ ❤️
+            </div>
+
+            <button class="nsr-sound" id="nsrSound" aria-label="Sound">
+                🔊
+            </button>
+
+            <button class="nsr-pause" id="nsrPause">
+                ❚❚
+            </button>
+
+        </header>
+
+        <!-- GAME -->
+        <section class="nsr-stage">
+
+            <canvas id="nsrCanvas"></canvas>
+
+            <!-- Start Screen -->
+            <div class="nsr-overlay nsr-active" id="nsrStartScreen">
+
+                <div class="nsr-card">
+
+                    <div class="nsr-logo">
+                        <span>J</span>
+                        <span>G</span>
+                        <span>F</span>
+                        <span>X</span>
+                    </div>
+
+                    <p class="nsr-mini-title">PRESENTS</p>
+
+                    <h1>NEON<br><span>SPACE RUN</span></h1>
+
+                    <p class="nsr-description">
+                        Collect energy. Dodge asteroids.<br>
+                        Survive as long as you can.
+                    </p>
+
+                    <div class="nsr-energy-info">
+                        <div>
+                            <span class="nsr-energy purple"></span>
+                            <b>+10</b>
+                            Purple Energy
+                        </div>
+
+                        <div>
+                            <span class="nsr-energy blue"></span>
+                            <b>+20</b>
+                            Blue Energy
+                        </div>
+
+                        <div>
+                            <span class="nsr-energy asteroid"></span>
+                            <b>-1 LIFE</b>
+                            Asteroid
+                        </div>
+                    </div>
+
+                    <button class="nsr-main-btn" id="nsrStart">
+                        START GAME
+                        <span>→</span>
+                    </button>
+
+                    <p class="nsr-controls">
+                        ← → / A D &nbsp; • &nbsp; Drag on Mobile
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- Pause -->
+            <div class="nsr-overlay" id="nsrPauseScreen">
+
+                <div class="nsr-card nsr-small-card">
+
+                    <div class="nsr-pause-icon">Ⅱ</div>
+
+                    <h2>GAME PAUSED</h2>
+
+                    <p>Take a breath, pilot.</p>
+
+                    <button class="nsr-main-btn" id="nsrResume">
+                        RESUME
+                        <span>→</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Game Over -->
+            <div class="nsr-overlay" id="nsrGameOver">
+
+                <div class="nsr-card nsr-small-card">
+
+                    <p class="nsr-mini-title">MISSION COMPLETE</p>
+
+                    <h2>GAME OVER</h2>
+
+                    <div class="nsr-final-score">
+                        <small>YOUR SCORE</small>
+                        <strong id="nsrFinalScore">0</strong>
+                    </div>
+
+                    <div class="nsr-new-best" id="nsrNewBest">
+                        ★ NEW HIGH SCORE
+                    </div>
+
+                    <button class="nsr-main-btn" id="nsrRestart">
+                        PLAY AGAIN
+                        <span>↻</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <footer class="nsr-footer">
+            <span>NEON SPACE RUN</span>
+            <span>•</span>
+            <span>JABIRGFX — VISUAL WITH VISION</span>
+        </footer>
+
+    </main>
+
+    <script src="neon-space-run.js"></script>
+
+</body>
+</html>

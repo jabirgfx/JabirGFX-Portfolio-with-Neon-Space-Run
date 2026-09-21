@@ -1,0 +1,792 @@
+/* =========================================================
+   JABIRGFX — NEON SPACE RUN
+   All classes are prefixed with "nsr" to avoid conflicts.
+   ========================================================= */
+
+:root {
+    --nsr-bg: #030712;
+    --nsr-panel: #07111e;
+    --nsr-line: #18314d;
+
+    --nsr-text: #f5f7ff;
+    --nsr-muted: #8e9db3;
+
+    --nsr-purple: #9a4cff;
+    --nsr-blue: #25b8ff;
+
+    --nsr-gradient:
+        linear-gradient(
+            135deg,
+            #5AA9FF 0%,
+            #514BFF 28%,
+            #4B00FF 55%,
+            #8A24FF 78%,
+            #C46CFF 100%
+        );
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    background:
+        radial-gradient(
+            circle at 50% 10%,
+            rgba(88, 57, 255, 0.16),
+            transparent 35%
+        ),
+        #030712;
+
+    color: var(--nsr-text);
+
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    overflow-x: hidden;
+}
+
+/* =========================================================
+   GAME WRAPPER
+   ========================================================= */
+
+.nsr-game {
+    width: min(1500px, 100%);
+    min-height: 100vh;
+
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(73, 43, 255, 0.08),
+            transparent 40%
+        ),
+        var(--nsr-bg);
+
+    border-left: 1px solid rgba(255,255,255,0.04);
+    border-right: 1px solid rgba(255,255,255,0.04);
+}
+
+/* =========================================================
+   HUD
+   ========================================================= */
+.nsr-brand {
+    display: flex;
+    align-items: center;
+}
+
+.nsr-brand img {
+    width: 130px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+.nsr-hud {
+    width: calc(100% - 28px);
+    height: 74px;
+
+    margin: 14px auto 0;
+
+    padding: 0 18px;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(10, 22, 38, 0.94),
+            rgba(5, 12, 25, 0.94)
+        );
+
+    border: 1px solid rgba(82, 139, 207, 0.18);
+
+    border-radius: 22px;
+
+    backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 15px 50px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+
+    position: relative;
+    z-index: 20;
+}
+
+.nsr-brand {
+    margin-right: auto;
+
+    font-size: 18px;
+    font-weight: 900;
+
+    letter-spacing: 3px;
+
+    background: var(--nsr-gradient);
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+.nsr-brand-dot {
+    display: inline-block;
+
+    width: 8px;
+    height: 8px;
+
+    margin-right: 8px;
+
+    border-radius: 50%;
+
+    background: var(--nsr-blue);
+
+    box-shadow:
+        0 0 10px var(--nsr-blue),
+        0 0 20px var(--nsr-purple);
+}
+
+.nsr-stat {
+    min-width: 90px;
+
+    padding: 7px 12px;
+
+    border-left: 1px solid rgba(255,255,255,0.07);
+}
+
+.nsr-stat small {
+    display: block;
+
+    color: var(--nsr-muted);
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+.nsr-stat strong {
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 19px;
+    line-height: 1;
+
+    font-variant-numeric: tabular-nums;
+}
+
+.nsr-lives {
+    padding: 9px 12px;
+
+    border: 1px solid rgba(255,255,255,0.07);
+
+    border-radius: 12px;
+
+    background: rgba(255,255,255,0.025);
+
+    white-space: nowrap;
+
+    font-size: 15px;
+
+    letter-spacing: 2px;
+}
+
+.nsr-sound,
+.nsr-pause {
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid rgba(255,255,255,0.1);
+
+    border-radius: 12px;
+
+    background: rgba(255,255,255,0.04);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.nsr-sound:hover,
+.nsr-pause:hover {
+    border-color: rgba(120,100,255,0.6);
+
+    background: rgba(120,80,255,0.13);
+
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   STAGE
+   ========================================================= */
+
+.nsr-stage {
+    position: relative;
+
+    width: calc(100% - 28px);
+
+    margin: 14px auto 0;
+
+    height: min(720px, calc(100vh - 130px));
+
+    min-height: 550px;
+
+    overflow: hidden;
+
+    border-radius: 28px;
+
+    border: 1px solid rgba(81, 129, 188, 0.2);
+
+    background:
+        radial-gradient(
+            circle at 50% 70%,
+            rgba(74, 43, 255, 0.13),
+            transparent 40%
+        ),
+        #02050c;
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,0.5),
+        inset 0 0 80px rgba(54, 67, 255, 0.05);
+}
+
+#nsrCanvas {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    touch-action: none;
+
+    cursor: crosshair;
+}
+
+/* =========================================================
+   OVERLAYS
+   ========================================================= */
+
+.nsr-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(12, 12, 42, 0.45),
+            rgba(0, 0, 0, 0.76)
+        );
+
+    backdrop-filter: blur(8px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+
+    z-index: 10;
+}
+
+.nsr-overlay.nsr-active {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+.nsr-card {
+    width: min(560px, 100%);
+
+    padding: 42px 38px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(10, 21, 38, 0.95),
+            rgba(5, 9, 21, 0.96)
+        );
+
+    border: 1px solid rgba(121, 105, 255, 0.25);
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 35px 100px rgba(0,0,0,0.55),
+        0 0 60px rgba(82, 56, 255, 0.08);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.nsr-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 15%;
+
+    width: 70%;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--nsr-blue),
+            var(--nsr-purple),
+            transparent
+        );
+
+    box-shadow:
+        0 0 20px var(--nsr-purple);
+}
+
+.nsr-logo {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 4px;
+
+    margin-bottom: 18px;
+
+    font-size: 22px;
+    font-weight: 1000;
+
+    letter-spacing: 5px;
+}
+
+.nsr-logo span {
+    background: var(--nsr-gradient);
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+.nsr-mini-title {
+    margin: 0 0 10px;
+
+    color: var(--nsr-blue);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+}
+
+.nsr-card h1 {
+    margin: 0;
+
+    font-size: clamp(42px, 7vw, 76px);
+
+    line-height: 0.92;
+
+    letter-spacing: -3px;
+
+    font-weight: 950;
+}
+
+.nsr-card h1 span {
+    background: var(--nsr-gradient);
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    text-shadow:
+        0 0 35px rgba(108, 67, 255, 0.2);
+}
+
+.nsr-description {
+    margin: 22px 0 26px;
+
+    color: var(--nsr-muted);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+.nsr-energy-info {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 9px;
+
+    margin-bottom: 28px;
+}
+
+.nsr-energy-info > div {
+    padding: 12px 8px;
+
+    border-radius: 14px;
+
+    background: rgba(255,255,255,0.025);
+
+    border: 1px solid rgba(255,255,255,0.06);
+
+    color: var(--nsr-muted);
+
+    font-size: 9px;
+}
+
+.nsr-energy-info b {
+    display: block;
+
+    margin: 4px 0;
+
+    color: white;
+
+    font-size: 11px;
+}
+
+.nsr-energy {
+    display: block;
+
+    width: 13px;
+    height: 13px;
+
+    margin: 0 auto 5px;
+
+    border-radius: 50%;
+}
+
+.nsr-energy.purple {
+    background: #b35cff;
+
+    box-shadow:
+        0 0 10px #a13cff,
+        0 0 25px #7c2cff;
+}
+
+.nsr-energy.blue {
+    background: #43d4ff;
+
+    box-shadow:
+        0 0 10px #25b8ff,
+        0 0 25px #008dff;
+}
+
+.nsr-energy.asteroid {
+    background: #858fa2;
+
+    box-shadow:
+        0 0 8px #687083;
+}
+
+.nsr-main-btn {
+    width: 100%;
+
+    padding: 16px 22px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background: var(--nsr-gradient);
+
+    color: white;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 35px rgba(93, 57, 255, 0.25);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.nsr-main-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 45px rgba(93, 57, 255, 0.4);
+}
+
+.nsr-main-btn span {
+    float: right;
+
+    font-size: 18px;
+
+    line-height: 12px;
+}
+
+.nsr-controls {
+    margin: 17px 0 0;
+
+    color: #64748b;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+}
+
+.nsr-small-card {
+    max-width: 430px;
+}
+
+.nsr-small-card h2 {
+    margin: 5px 0 15px;
+
+    font-size: 38px;
+
+    letter-spacing: -1px;
+}
+
+.nsr-pause-icon {
+    width: 65px;
+    height: 65px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(139, 92, 246, 0.25),
+            rgba(37, 184, 255, 0.12)
+        );
+
+    border: 1px solid rgba(130,100,255,0.3);
+
+    color: white;
+
+    font-size: 25px;
+}
+
+.nsr-small-card p {
+    color: var(--nsr-muted);
+}
+
+.nsr-final-score {
+    margin: 25px 0 10px;
+
+    padding: 18px;
+
+    border-radius: 18px;
+
+    background: rgba(255,255,255,0.03);
+
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+.nsr-final-score small {
+    display: block;
+
+    color: var(--nsr-muted);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+.nsr-final-score strong {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 54px;
+
+    line-height: 1;
+
+    background: var(--nsr-gradient);
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+.nsr-new-best {
+    display: none;
+
+    margin: 14px 0 20px;
+
+    color: #b98cff;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+.nsr-new-best.nsr-show {
+    display: block;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.nsr-footer {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 15px;
+
+    color: #43536b;
+
+    font-size: 8px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .nsr-hud {
+        height: 64px;
+
+        padding: 0 10px;
+
+        border-radius: 18px;
+
+        gap: 5px;
+    }
+
+    .nsr-brand {
+        font-size: 13px;
+
+        letter-spacing: 2px;
+    }
+
+    .nsr-stat {
+        min-width: 57px;
+
+        padding: 5px 7px;
+    }
+
+    .nsr-stat small {
+        font-size: 7px;
+    }
+
+    .nsr-stat strong {
+        font-size: 15px;
+    }
+
+    .nsr-lives {
+        padding: 7px;
+
+        font-size: 11px;
+
+        letter-spacing: 0;
+    }
+
+    .nsr-sound,
+    .nsr-pause {
+        width: 36px;
+        height: 36px;
+
+        font-size: 12px;
+    }
+
+    .nsr-stage {
+        min-height: 560px;
+
+        height: calc(100vh - 105px);
+
+        border-radius: 20px;
+    }
+
+    .nsr-card {
+        padding: 32px 20px;
+
+        border-radius: 23px;
+    }
+
+    .nsr-energy-info {
+        gap: 5px;
+    }
+
+    .nsr-energy-info > div {
+        padding: 10px 4px;
+
+        font-size: 7px;
+    }
+
+    .nsr-energy-info b {
+        font-size: 9px;
+    }
+
+    .nsr-footer {
+        display: none;
+    }
+}
+
+@media (max-width: 440px) {
+
+    .nsr-brand {
+        display: none;
+    }
+
+    .nsr-hud {
+        justify-content: flex-end;
+    }
+
+    .nsr-card h1 {
+        font-size: 43px;
+    }
+}
