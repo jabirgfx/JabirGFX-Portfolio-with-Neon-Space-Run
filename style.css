@@ -106,7 +106,51 @@ select {
 /* =========================================================
    NAVBAR
 ========================================================= */
+/* =========================
+   NAV ACTIVE GRADIENT
+========================= */
 
+.nav a {
+    color: #c2ccdc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Active link */
+.nav a.active {
+    background: linear-gradient(
+        90deg,
+        #9a4cff,
+        #25b8ff,
+        #9a4cff,
+        #25b8ff
+    );
+
+    background-size: 300% 100%;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    animation: navGradient 3s linear infinite;
+}
+
+/* Gradient movement */
+@keyframes navGradient {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+
+}
 .site-header {
     height: 82px;
     border: 1px solid rgba(91, 113, 150, 0.28);
@@ -4537,7 +4581,24 @@ body {
     transform: translateX(5px);
     color: #25b8ff;
 }
+.project-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
+}
 
+.project-icon img {
+    width: 60px !important;
+    height: 60px !important;
+    max-width: 60px !important;
+    max-height: 60px !important;
+    object-fit: contain;
+    display: block;
+}
 
 /* =========================================================
    PROJECT GRID
@@ -4821,7 +4882,6 @@ body {
     min-width: 0;
     flex: 1;
 }
-
 .project-content h3 {
     margin: 0 0 4px;
 
@@ -5514,34 +5574,33 @@ body {
     /*
        Do NOT make these transparent.
        Their existing card backgrounds stay unchanged.
-    */
+    *
 }
 
 
 /* Featured project cards */
 
-.site-background .project-card {
+.site-background .project-card 
     /*
        Existing Featured Work card background stays unchanged.
-    */
+    *
 }
 
 
 /* Services cards */
 
-.site-background .service {
+.site-background .service 
     /*
        Existing service card background stays unchanged.
-    */
+    
 }
 
 
 /* Process cards */
 
-.site-background .process-grid > div {
+.site-background .process-grid > div 
     /*
        Existing process card background stays unchanged.
-    */
 }
 
 
@@ -5557,136 +5616,118 @@ body {
    Same continuous background on smaller screens
 ========================================================= */
 
-@media (max-width: 700px) {
+@media (max-width: 700px)
+
 
     .site-background {
-        background:
-            radial-gradient(
-                500px 360px at 85% 45%,
-                rgba(0, 91, 163, 0.10),
-                transparent 68%
-            ),
-            radial-gradient(
-                420px 320px at 10% 85%,
-                rgba(79, 10, 167, 0.24),
-                transparent 70%
-            ),
-            linear-gradient(
-                116deg,
-                #150521 0%,
-                #09091b 45%,
-                #041522 100%
-            );
-    }
-
-    .site-background .about-section,
-    .site-background .featured-work,
-    .site-background .services,
-    .site-background .process,
-    .site-background .nsr-game-section,
-    .site-background .footer {
-        background: transparent !important;
-    }
-
-    .site-background .featured-work::before,
-    .site-background .featured-work::after {
-        display: none !important;
-        content: none !important;
-    }
-
-    .site-background .cta {
-        background:
-            radial-gradient(
-                circle at 70% 50%,
-                #21116a,
-                transparent 35%
-            ),
-            #07111e;
-    }
-
-    .site-background .nsr-game-shell {
-        background: #030714;
-    }
-}
-
-
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
-
-@media (max-width: 420px) {
-
-.site-background {
     position: relative;
     isolation: isolate;
+    overflow: hidden;
+
+    /* Deep navy base */
+    background: #07082b;
+}
+
+/* SOFT BLUE + PURPLE GLOW */
+.site-background::before {
+    content: "";
+    position: absolute;
+    inset: -15%;
+    z-index: -1;
+    pointer-events: none;
 
     background:
-
-        /* TOP LEFT — electric blue glow */
+        /* TOP LEFT PURPLE */
         radial-gradient(
-            520px 440px at 10% 6%,
-            rgba(42, 25, 255, 0.42),
-            rgba(25, 5, 150, 0.18) 42%,
-            transparent 74%
+            ellipse 420px 300px at 18% 10%,
+            rgba(154, 0, 255, 0.90) 0%,
+            rgba(105, 20, 255, 0.55) 25%,
+            transparent 70%
         ),
 
-        /* TOP RIGHT — rich violet glow */
+        /* TOP CENTER BLUE */
         radial-gradient(
-            540px 520px at 94% 10%,
-            rgba(145, 35, 255, 0.44),
-            rgba(80, 10, 160, 0.17) 44%,
-            transparent 74%
-        ),
-
-        /* LEFT CENTER — deep blue atmosphere */
-        radial-gradient(
-            480px 620px at 8% 42%,
-            rgba(25, 45, 235, 0.30),
-            rgba(35, 5, 135, 0.13) 45%,
-            transparent 76%
-        ),
-
-        /* RIGHT CENTER — violet atmosphere */
-        radial-gradient(
-            520px 620px at 94% 48%,
-            rgba(125, 25, 245, 0.34),
-            rgba(65, 5, 135, 0.12) 45%,
-            transparent 76%
-        ),
-
-        /* CENTER — very subtle purple aura */
-        radial-gradient(
-            600px 500px at 50% 48%,
-            rgba(125, 35, 255, 0.075),
+            ellipse 500px 380px at 48% 22%,
+            rgba(45, 55, 255, 0.75) 0%,
+            rgba(30, 40, 220, 0.35) 35%,
             transparent 72%
         ),
 
-        /* BOTTOM LEFT — purple nebula */
+        /* TOP RIGHT CYAN */
         radial-gradient(
-            620px 520px at 8% 94%,
-            rgba(155, 25, 255, 0.38),
-            rgba(75, 5, 155, 0.15) 45%,
-            transparent 76%
+            ellipse 380px 500px at 100% 28%,
+            rgba(0, 160, 255, 0.85) 0%,
+            rgba(0, 100, 255, 0.40) 35%,
+            transparent 72%
         ),
 
-        /* BOTTOM RIGHT — blue/violet balance */
+        /* LEFT MIDDLE BLUE */
         radial-gradient(
-            600px 420px at 92% 94%,
-            rgba(55, 25, 255, 0.24),
-            rgba(45, 5, 125, 0.10) 45%,
-            transparent 76%
+            ellipse 330px 300px at 18% 48%,
+            rgba(0, 115, 255, 0.70) 0%,
+            rgba(0, 70, 220, 0.30) 38%,
+            transparent 72%
         ),
 
-        /* DEEP SPACE BASE */
-        linear-gradient(
-            135deg,
-            #030008 0%,
-            #070011 24%,
-            #0d011b 48%,
-            #080012 72%,
-            #020006 100%
+        /* LEFT LOWER PURPLE */
+        radial-gradient(
+            ellipse 330px 300px at 4% 78%,
+            rgba(155, 0, 255, 0.75) 0%,
+            rgba(100, 0, 220, 0.35) 35%,
+            transparent 72%
+        ),
+
+        /* LOWER CENTER PURPLE */
+        radial-gradient(
+            ellipse 430px 360px at 58% 74%,
+            rgba(115, 0, 255, 0.80) 0%,
+            rgba(65, 0, 220, 0.35) 38%,
+            transparent 72%
+        ),
+
+        /* LOWER RIGHT BLUE */
+        radial-gradient(
+            ellipse 450px 380px at 88% 88%,
+            rgba(0, 145, 255, 0.85) 0%,
+            rgba(0, 80, 240, 0.40) 38%,
+            transparent 72%
         );
 
-    background-attachment: fixed;
-    background-size: cover;
+    filter: blur(45px);
+    transform: scale(1.05);
+}
+
+
+/* EXTRA SOFT ATMOSPHERE */
+.site-background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse 600px 450px at 40% 20%,
+            rgba(80, 0, 255, 0.12),
+            transparent 70%
+        ),
+        radial-gradient(
+            ellipse 500px 500px at 75% 75%,
+            rgba(0, 100, 255, 0.12),
+            transparent 70%
+        );
+
+    filter: blur(70px);
+}/* ================================
+   FOOTER GAP FIX
+================================ */
+
+.featured-work,
+.about-section,
+.services-section,
+.process-section,
+.contact-section {
+    height: auto;
+    min-height: 0;
 }
