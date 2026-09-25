@@ -1210,7 +1210,7 @@ h1 span {
 /* =========================
    PROJECT CARD
 ========================= */
-.projects-card .project-icon {
+.projects-card .about-project-icon {
     border: none !important;
     box-shadow: none !important;
     outline: none !important;
@@ -3870,10 +3870,10 @@ img, svg, video, canvas {
 }
 
 /* Project icon position */
-.projects-card .project-icon {
-    flex: 0 0 48px !important;
-    width: 54px !important;
-    height: 48px !important;
+.projectsc-card .about-project-icon {
+    flex: 0 0 60px !important;
+    width: 60px !important;
+    height: 60px !important;
 
     margin: 0 0 17px 0 !important;
 }
@@ -4082,7 +4082,7 @@ img, svg, video, canvas {
         padding: 24px !important;
     }
 
-    .projects-card .project-icon,
+    .projects-card .about-project-icon,
     .clients-card .people-icon,
     .wide-item .calendar-icon,
     .wide-item .trophy-icon {
@@ -4229,7 +4229,7 @@ img, svg, video, canvas {
    BOX SIZE WILL NOT CHANGE
 ========================================================= */
 
-.project-icon,
+.about-project-icon,
 .people-icon,
 .calendar-icon,
 .trophy-icon {
@@ -4274,6 +4274,31 @@ img, svg, video, canvas {
     object-fit: contain !important;
     display: block !important;
     transform: scale(1.28) !important;
+}
+
+/* =========================================================
+   ABOUT STATS — PROJECT ICON (INDEPENDENT)
+   ========================================================= */
+
+.about-project-icon {
+    flex: 0 0 60px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.about-project-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transform: scale(1.65);
 }
 
 /* =========================================================
@@ -4594,8 +4619,8 @@ body {
 .project-icon img {
     width: 60px !important;
     height: 60px !important;
-    max-width: 60px !important;
-    max-height: 60px !important;
+    max-width: 15px !important;
+    max-height: 15px !important;
     object-fit: contain;
     display: block;
 }
