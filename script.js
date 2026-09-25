@@ -431,4 +431,69 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     );
 
+});// ========================================
+// ACTIVE NAVBAR — CLICK + SCROLL
+// ========================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const links = document.querySelectorAll(".nav a");
+    const sections = document.querySelectorAll("section[id]");
+
+    let isClickScrolling = false;
+
+    function activate(id) {
+        links.forEach(link => {
+            link.classList.toggle(
+                "active",
+                link.getAttribute("href") === "#" + id
+            );
+        });
+    }
+
+    // NAV CLICK
+    links.forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            const id = link.getAttribute("href").replace("#", "");
+
+            // Immediately activate clicked item
+            activate(id);
+
+            // Temporarily stop scroll detection
+            isClickScrolling = true;
+
+            setTimeout(() => {
+                isClickScrolling = false;
+            }, 800);
+
+        });
+
+    });
+
+
+    // SCROLL
+    window.addEventListener("scroll", () => {
+
+        if (isClickScrolling) return;
+
+        let current = "";
+
+        sections.forEach(section => {
+
+            const rect = section.getBoundingClientRect();
+
+            if (rect.top <= 150 && rect.bottom > 150) {
+                current = section.id;
+            }
+
+        });
+
+        if (current) {
+            activate(current);
+        }
+
+    });
+
 });
