@@ -1,5 +1,4 @@
-
-    // Blog & Case Study Data
+// Blog & Case Study Data
     const blogData = {
       'blog-1': {
         tag: 'PRODUCT ADVERTISING',
@@ -619,6 +618,13 @@
 
           modalOverlay.classList.add('active');
           document.body.style.overflow = 'hidden';
+
+          // Hide the main website navbar while the blog popup is open.
+          // It will be restored automatically when the popup closes.
+          const mainNavbar = document.querySelector('header');
+          if (mainNavbar) {
+            mainNavbar.style.display = 'none';
+          }
         }
       });
     });
@@ -627,6 +633,12 @@
     function closeModal() {
       modalOverlay.classList.remove('active');
       document.body.style.overflow = '';
+
+      // Restore the main website navbar after the blog popup closes.
+      const mainNavbar = document.querySelector('header');
+      if (mainNavbar) {
+        mainNavbar.style.display = '';
+      }
     }
 
     modalClose.addEventListener('click', closeModal);
@@ -642,4 +654,3 @@
         closeModal();
       }
     });
-  
