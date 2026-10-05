@@ -1,316 +1,1451 @@
+/* =========================================================
+   JABIRGFX — DESIGN BLOG SECTION
+   FULL FIXED CSS
+   ========================================================= */
 
-    @font-face {
-      font-family: 'Azonix';
-      src: url('https://fonts.cdnfonts.com/s/29224/Azonix-1GB3.woff') format('woff');
-      font-weight: normal;
-      font-style: normal;
-    }
+/* =========================================================
+   FONT
+   ========================================================= */
 
-    .jg-blog-section {
-      --bg-dark: #060814;
-      --border-cyber: rgba(90, 169, 255, 0.2);
-    }
-
-    .jg-blog-section {
-      background-color: var(--bg-dark);
-      color: #f8fafc;
-      font-family: 'Inter', sans-serif;
-      min-height: 100vh;
-      overflow-x: hidden;
-      background-image: 
-        radial-gradient(circle at 10% 20%, rgba(138, 36, 255, 0.12) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(90, 169, 255, 0.12) 0%, transparent 40%),
-        linear-gradient(rgba(90, 169, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(90, 169, 255, 0.03) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
-    }
-
-    .font-azonix {
-      font-family: 'Azonix', 'Inter', sans-serif;
-      letter-spacing: 0.1em;
-    }
-
-    .matrix-gradient-text {
-      background: linear-gradient(90deg, #5AA9FF, #514BFF, #4B00FF, #8A24FF, #C46CFF);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      color: transparent;
-      display: inline-block;
-    }
-
-    @keyframes livePulse {
-      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(90, 169, 255, 0.7); }
-      70% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(90, 169, 255, 0); }
-      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(90, 169, 255, 0); }
-    }
-
-    .live-dot {
-      width: 8px;
-      height: 8px;
-      background: #5AA9FF;
-      border-radius: 50%;
-      display: inline-block;
-      animation: livePulse 2s infinite;
-    }
-
-    .blog-card {
-      position: relative;
-      aspect-ratio: 3 / 4;
-      background: rgba(10, 15, 30, 0.85);
-      backdrop-filter: blur(16px);
-      border: 1px solid var(--border-cyber);
-      border-radius: 24px;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      cursor: pointer;
-      overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .card-image-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .blog-card:hover .card-image-bg {
-      transform: scale(1.08);
-    }
-
-    .card-gradient-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(6, 8, 20, 0.3) 0%, rgba(6, 8, 20, 0.75) 100%);
-      pointer-events: none;
-    }
-
-    .glass-footer {
-      position: relative;
-      z-index: 10;
-      margin-top: auto;
-      background: rgba(8, 12, 28, 0.65);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-top: 1px solid rgba(90, 169, 255, 0.35);
-      padding: 16px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 12px;
-      transition: all 0.3s ease;
-    }
-
-    .blog-card:hover .glass-footer {
-      background: rgba(12, 18, 42, 0.85);
-      border-top-color: rgba(196, 108, 255, 0.6);
-    }
-
-    .blog-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 24px;
-      padding: 1px;
-      background: linear-gradient(135deg, rgba(90, 169, 255, 0.5), transparent, rgba(196, 108, 255, 0.5));
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      opacity: 0.25;
-      pointer-events: none;
-      transition: opacity 0.4s ease;
-    }
-
-    .blog-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      border-color: rgba(138, 36, 255, 0.7);
-      box-shadow: 0 20px 40px -10px rgba(75, 0, 255, 0.35), 0 0 25px rgba(196, 108, 255, 0.2);
-    }
-
-    .blog-card:hover::before {
-      opacity: 1;
-    }
-
-    .corner-btn {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #94a3b8;
-      transition: all 0.3s ease;
-    }
-
-    .blog-card:hover .corner-btn {
-      background: #8A24FF;
-      color: #ffffff;
-      border-color: #c46cff;
-      transform: rotate(45deg);
-      box-shadow: 0 0 16px rgba(138, 36, 255, 0.8);
-    }
-
-    .tag-badge {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      padding: 4px 10px;
-      border-radius: 12px;
-      background: rgba(81, 75, 255, 0.2);
-      border: 1px solid rgba(138, 36, 255, 0.4);
-      color: #5AA9FF;
-      text-transform: uppercase;
-    }
-
-    /* Modal Overlay */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-      background-color: rgba(4, 5, 14, 0.94);
-      background-image: 
-        radial-gradient(circle at 50% 40%, rgba(138, 36, 255, 0.12) 0%, transparent 70%),
-        radial-gradient(circle at 10% 90%, rgba(90, 169, 255, 0.08) 0%, transparent 50%),
-        linear-gradient(rgba(90, 169, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(90, 169, 255, 0.025) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .modal-overlay.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .modal-container {
-      width: 100%;
-      max-width: 860px;
-      max-height: 88vh;
-      background: linear-gradient(145deg, rgba(14, 18, 36, 0.98), rgba(6, 10, 22, 0.98));
-      border: 1px solid rgba(138, 36, 255, 0.4);
-      border-radius: 28px;
-      box-shadow: 0 25px 60px -15px rgba(75, 0, 255, 0.4), 0 0 35px rgba(90, 169, 255, 0.2);
-      overflow: hidden;
-      transform: scale(0.92) translateY(20px);
-      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-    }
-
-    .modal-scroll-area {
-      max-height: 88vh;
-      overflow-y: auto;
-      padding: 1.5rem;
-    }
-    @media (min-width: 640px) {
-      .modal-scroll-area {
-        padding: 2.5rem;
-      }
-    }
-
-    .modal-scroll-area::-webkit-scrollbar {
-      width: 6px;
-    }
-    .modal-scroll-area::-webkit-scrollbar-track {
-      background: rgba(10, 15, 30, 0.6);
-      margin-top: 20px;
-      margin-bottom: 20px;
-      border-radius: 10px;
-    }
-    .modal-scroll-area::-webkit-scrollbar-thumb {
-      background: linear-gradient(180deg, #5AA9FF, #8A24FF);
-      border-radius: 10px;
-    }
-
-    /* Styled Section Cards in Case Study */
-    .case-section-box {
-      background: rgba(12, 18, 38, 0.6);
-      border: 1px solid rgba(90, 169, 255, 0.15);
-      border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 20px;
-      backdrop-filter: blur(8px);
-    }
-
-    .case-badge-title {
-      font-family: 'Azonix', 'Inter', sans-serif;
-      font-size: 13px;
-      color: #5AA9FF;
-      letter-spacing: 1px;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .case-badge-title::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      background: #8A24FF;
-      border-radius: 50%;
-      box-shadow: 0 0 8px #8A24FF;
-    }
-  
-/* Scoped utility classes used by the Blog component */
-.jg-blog-section .absolute{position:absolute}.jg-blog-section .relative{position:relative}
-.jg-blog-section .inset-0{inset:0}.jg-blog-section .top-4{top:1rem}.jg-blog-section .top-5{top:1.25rem}.jg-blog-section .right-4{right:1rem}.jg-blog-section .right-5{right:1.25rem}
-.jg-blog-section .z-10{z-index:10}.jg-blog-section .z-30{z-index:30}
-.jg-blog-section .block{display:block}.jg-blog-section .inline-flex{display:inline-flex}.jg-blog-section .flex{display:flex}.jg-blog-section .grid{display:grid}
-.jg-blog-section .flex-col{flex-direction:column}.jg-blog-section .flex-wrap{flex-wrap:wrap}
-.jg-blog-section .items-center{align-items:center}.jg-blog-section .items-start{align-items:flex-start}.jg-blog-section .justify-between{justify-content:space-between}
-.jg-blog-section .shrink-0{flex-shrink:0}.jg-blog-section .mx-auto{margin-left:auto;margin-right:auto}
-.jg-blog-section .w-full{width:100%}.jg-blog-section .h-full{height:100%}.jg-blog-section .w-4{width:1rem}.jg-blog-section .h-4{height:1rem}.jg-blog-section .w-5{width:1.25rem}.jg-blog-section .h-5{height:1.25rem}.jg-blog-section .w-1\.5{width:.375rem}.jg-blog-section .h-1\.5{height:.375rem}
-.jg-blog-section .max-w-2xl{max-width:42rem}.jg-blog-section .max-w-7xl{max-width:80rem}.jg-blog-section .max-w-lg{max-width:32rem}.jg-blog-section .max-w-md{max-width:28rem}
-.jg-blog-section .aspect-square{aspect-ratio:1/1}.jg-blog-section .object-cover{object-fit:cover}.jg-blog-section .overflow-hidden{overflow:hidden}
-.jg-blog-section .rounded-full{border-radius:9999px}.jg-blog-section .rounded-md{border-radius:.375rem}.jg-blog-section .rounded-lg{border-radius:.5rem}.jg-blog-section .rounded-xl{border-radius:.75rem}.jg-blog-section .rounded-2xl{border-radius:1rem}
-.jg-blog-section .p-2{padding:.5rem}.jg-blog-section .p-2\.5{padding:.625rem}.jg-blog-section .p-3{padding:.75rem}.jg-blog-section .p-4{padding:1rem}
-.jg-blog-section .px-3\.5{padding-left:.875rem;padding-right:.875rem}.jg-blog-section .px-4{padding-left:1rem;padding-right:1rem}.jg-blog-section .py-1\.5{padding-top:.375rem;padding-bottom:.375rem}.jg-blog-section .py-12{padding-top:3rem;padding-bottom:3rem}
-.jg-blog-section .pt-6{padding-top:1.5rem}.jg-blog-section .pb-4{padding-bottom:1rem}.jg-blog-section .pr-4{padding-right:1rem}
-.jg-blog-section .mb-0\.5{margin-bottom:.125rem}.jg-blog-section .mb-1{margin-bottom:.25rem}.jg-blog-section .mb-2{margin-bottom:.5rem}.jg-blog-section .mb-3{margin-bottom:.75rem}.jg-blog-section .mb-4{margin-bottom:1rem}.jg-blog-section .mb-6{margin-bottom:1.5rem}.jg-blog-section .mb-8{margin-bottom:2rem}.jg-blog-section .mb-12{margin-bottom:3rem}
-.jg-blog-section .mt-2{margin-top:.5rem}.jg-blog-section .mt-3{margin-top:.75rem}.jg-blog-section .mt-8{margin-top:2rem}
-.jg-blog-section .gap-2{gap:.5rem}.jg-blog-section .gap-3{gap:.75rem}.jg-blog-section .gap-6{gap:1.5rem}
-.jg-blog-section .space-y-2>*+*{margin-top:.5rem}
-.jg-blog-section .grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.jg-blog-section .grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-.jg-blog-section .font-bold{font-weight:700}.jg-blog-section .font-medium{font-weight:500}.jg-blog-section .font-normal{font-weight:400}.jg-blog-section .font-semibold{font-weight:600}
-.jg-blog-section .text-left{text-align:left}.jg-blog-section .text-center{text-align:center}.jg-blog-section .italic{font-style:italic}
-.jg-blog-section .text-xs{font-size:.75rem;line-height:1rem}.jg-blog-section .text-sm{font-size:.875rem;line-height:1.25rem}.jg-blog-section .text-base{font-size:1rem;line-height:1.5rem}.jg-blog-section .text-xl{font-size:1.25rem;line-height:1.75rem}.jg-blog-section .text-3xl{font-size:1.875rem;line-height:2.25rem}
-.jg-blog-section .leading-relaxed{line-height:1.625}.jg-blog-section .leading-snug{line-height:1.375}.jg-blog-section .leading-tight{line-height:1.25}
-.jg-blog-section .tracking-wide{letter-spacing:.025em}.jg-blog-section .tracking-wider{letter-spacing:.05em}.jg-blog-section .tracking-widest{letter-spacing:.1em}
-.jg-blog-section .text-white{color:#fff}.jg-blog-section .text-slate-200{color:#e2e8f0}.jg-blog-section .text-slate-300{color:#cbd5e1}.jg-blog-section .text-slate-400{color:#94a3b8}.jg-blog-section .text-slate-500{color:#64748b}.jg-blog-section .text-slate-950{color:#020617}
-.jg-blog-section .text-cyan-200{color:#a5f3fc}.jg-blog-section .text-cyan-300{color:#67e8f9}.jg-blog-section .text-emerald-300{color:#6ee7b7}.jg-blog-section .text-emerald-400{color:#34d399}.jg-blog-section .text-purple-300{color:#d8b4fe}
-.jg-blog-section .text-\[\#5AA9FF\]{color:#5AA9FF}
-.jg-blog-section .bg-white{background:#fff}.jg-blog-section .bg-cyan-400{background:#22d3ee}.jg-blog-section .bg-cyan-950\/20{background:rgba(8,47,73,.2)}
-.jg-blog-section .bg-slate-800\/80{background:rgba(30,41,59,.8)}.jg-blog-section .bg-slate-900\/50{background:rgba(15,23,42,.5)}.jg-blog-section .bg-slate-900\/60{background:rgba(15,23,42,.6)}.jg-blog-section .bg-slate-900\/80{background:rgba(15,23,42,.8)}.jg-blog-section .bg-slate-900\/90{background:rgba(15,23,42,.9)}
-.jg-blog-section .bg-\[\#00E5FF\]{background:#00E5FF}.jg-blog-section .bg-\[\#031B4E\]{background:#031B4E}.jg-blog-section .bg-\[\#2ECC71\]{background:#2ECC71}
-.jg-blog-section .border{border-width:1px;border-style:solid}.jg-blog-section .border-b{border-bottom-width:1px}.jg-blog-section .border-t{border-top-width:1px}.jg-blog-section .border-l-2{border-left-width:2px}
-.jg-blog-section .border-slate-800{border-color:#1e293b}.jg-blog-section .border-slate-800\/80{border-color:rgba(30,41,59,.8)}.jg-blog-section .border-slate-700\/50{border-color:rgba(51,65,85,.5)}
-.jg-blog-section .border-cyan-400{border-color:#22d3ee}.jg-blog-section .border-cyan-400\/30{border-color:rgba(34,211,238,.3)}.jg-blog-section .border-cyan-500\/40{border-color:rgba(6,182,212,.4)}.jg-blog-section .border-purple-500\/30{border-color:rgba(168,85,247,.3)}
-.jg-blog-section .backdrop-blur-md{backdrop-filter:blur(12px)}.jg-blog-section .transition-colors{transition:color .2s,background-color .2s,border-color .2s}
-.jg-blog-section .drop-shadow-md{filter:drop-shadow(0 4px 3px rgba(0,0,0,.07))}
-.jg-blog-section .opacity-75{opacity:.75}
-.jg-blog-section .hover\:text-white:hover{color:#fff}.jg-blog-section .hover\:bg-slate-700:hover{background:#334155}
-.jg-blog-section .shadow-\[0_0_15px_rgba\(90\,169\,255\,0\.15\)\]{box-shadow:0 0 15px rgba(90,169,255,.15)}
-.jg-blog-section .shadow-\[0_0_30px_rgba\(0\,229\,255\,0\.2\)\]{box-shadow:0 0 30px rgba(0,229,255,.2)}
-@media (min-width:640px){
- .jg-blog-section .sm\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
- .jg-blog-section .sm\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
- .jg-blog-section .sm\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}
- .jg-blog-section .sm\:text-2xl{font-size:1.5rem;line-height:2rem}.jg-blog-section .sm\:text-5xl{font-size:3rem;line-height:1}.jg-blog-section .sm\:text-base{font-size:1rem;line-height:1.5rem}.jg-blog-section .sm\:text-lg{font-size:1.125rem;line-height:1.75rem}.jg-blog-section .sm\:text-sm{font-size:.875rem;line-height:1.25rem}
- .jg-blog-section .sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.jg-blog-section .sm\:pr-8{padding-right:2rem}
+@font-face {
+  font-family: 'Azonix';
+  src: url('https://fonts.cdnfonts.com/s/29224/Azonix-1GB3.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
-@media (min-width:1024px){.jg-blog-section .lg\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.jg-blog-section .lg\:px-8{padding-left:2rem;padding-right:2rem}}
+
+
+/* =========================================================
+   BLOG ROOT VARIABLES
+   ========================================================= */
+
+.jg-blog-section {
+  --bg-dark: #060814;
+  --border-cyber: rgba(90, 169, 255, 0.2);
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+
+.jg-blog-section > .max-w-7xl {
+  width: 89.6%;
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* =========================================================
+   BLOG SECTION
+   ========================================================= */
+
+.jg-blog-section {
+  position: relative;
+  display: block;
+  clear: both;
+
+  /*
+   * IMPORTANT:
+   * Prevent the blog from touching the previous section.
+   */
+  margin-top: 0 !important;
+
+  /*
+   * This fixes the upper gap shown in the screenshot.
+   * The badge/title will now sit properly inside the section.
+   */
+  padding-top: 90px !important;
+  padding-bottom: 100px !important;
+
+  box-sizing: border-box;
+
+  background-color: var(--bg-dark);
+  color: #f8fafc;
+
+  font-family: 'Inter', sans-serif;
+
+  min-height: 100vh;
+
+  overflow-x: hidden;
+
+  background-image:
+    radial-gradient(
+      circle at 10% 20%,
+      rgba(138, 36, 255, 0.12) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(90, 169, 255, 0.12) 0%,
+      transparent 40%
+    ),
+    linear-gradient(
+      rgba(90, 169, 255, 0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(90, 169, 255, 0.03) 1px,
+      transparent 1px
+    );
+
+  background-size:
+    100% 100%,
+    100% 100%,
+    40px 40px,
+    40px 40px;
+}
+
+
+/* =========================================================
+   PREVIOUS SECTION → BLOG SPACING
+   ========================================================= */
+
+/*
+ * Prevent the section above from visually touching
+ * the Blog section.
+ *
+ * This does NOT change its background, colors or layout.
+ */
+
+.jg-blog-section::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 0;
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   FIRST BLOG ELEMENT
+   ========================================================= */
+
+/*
+ * Prevent accidental negative margins / transforms
+ * from pushing the first blog element outside.
+ */
+
+.jg-blog-section > .max-w-7xl > :first-child {
+  margin-top: 0;
+}
+
+
+/* =========================================================
+   AZONIX
+   ========================================================= */
+
+.font-azonix {
+  font-family: 'Azonix', 'Inter', sans-serif;
+  letter-spacing: 0.1em;
+}
+
+
+/* =========================================================
+   GRADIENT TEXT
+   ========================================================= */
+
+.matrix-gradient-text {
+  background:
+    linear-gradient(
+      90deg,
+      #5AA9FF,
+      #514BFF,
+      #4B00FF,
+      #8A24FF,
+      #C46CFF
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+
+  display: inline-block;
+}
+
+
+/* =========================================================
+   LIVE DOT ANIMATION
+   ========================================================= */
+
+@keyframes livePulse {
+
+  0% {
+    transform: scale(0.95);
+    box-shadow:
+      0 0 0 0 rgba(90, 169, 255, 0.7);
+  }
+
+  70% {
+    transform: scale(1.1);
+    box-shadow:
+      0 0 0 8px rgba(90, 169, 255, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow:
+      0 0 0 0 rgba(90, 169, 255, 0);
+  }
+
+}
+
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+
+  background: #5AA9FF;
+
+  border-radius: 50%;
+
+  display: inline-block;
+
+  animation: livePulse 2s infinite;
+}
+
+
+/* =========================================================
+   BLOG CARDS
+   ========================================================= */
+
+.blog-card {
+  position: relative;
+
+  aspect-ratio: 3 / 4;
+
+  background: rgba(10, 15, 30, 0.85);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  border: 1px solid var(--border-cyber);
+
+  border-radius: 24px;
+
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  transition:
+    all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+/* =========================================================
+   CARD IMAGE
+   ========================================================= */
+
+.card-image-bg {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+.blog-card:hover .card-image-bg {
+  transform: scale(1.08);
+}
+
+
+/* =========================================================
+   CARD IMAGE OVERLAY
+   ========================================================= */
+
+.card-gradient-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(6, 8, 20, 0.3) 0%,
+      rgba(6, 8, 20, 0.75) 100%
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   CARD FOOTER
+   ========================================================= */
+
+.glass-footer {
+  position: relative;
+
+  z-index: 10;
+
+  margin-top: auto;
+
+  background: rgba(8, 12, 28, 0.65);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-top:
+    1px solid rgba(90, 169, 255, 0.35);
+
+  padding: 16px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  transition: all 0.3s ease;
+}
+
+
+.blog-card:hover .glass-footer {
+  background: rgba(12, 18, 42, 0.85);
+
+  border-top-color:
+    rgba(196, 108, 255, 0.6);
+}
+
+
+/* =========================================================
+   CARD BORDER EFFECT
+   ========================================================= */
+
+.blog-card::before {
+  content: '';
+
+  position: absolute;
+
+  inset: 0;
+
+  border-radius: 24px;
+
+  padding: 1px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(90, 169, 255, 0.5),
+      transparent,
+      rgba(196, 108, 255, 0.5)
+    );
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+  -webkit-mask-composite: xor;
+
+  mask-composite: exclude;
+
+  opacity: 0.25;
+
+  pointer-events: none;
+
+  transition: opacity 0.4s ease;
+}
+
+
+/* =========================================================
+   CARD HOVER
+   ========================================================= */
+
+.blog-card:hover {
+  transform:
+    translateY(-8px)
+    scale(1.02);
+
+  border-color:
+    rgba(138, 36, 255, 0.7);
+
+  box-shadow:
+    0 20px 40px -10px
+      rgba(75, 0, 255, 0.35),
+    0 0 25px
+      rgba(196, 108, 255, 0.2);
+}
+
+
+.blog-card:hover::before {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   CORNER BUTTON
+   ========================================================= */
+
+.corner-btn {
+  width: 40px;
+  height: 40px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.06);
+
+  border:
+    1px solid rgba(255, 255, 255, 0.15);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #94a3b8;
+
+  transition: all 0.3s ease;
+}
+
+
+.blog-card:hover .corner-btn {
+  background: #8A24FF;
+
+  color: #ffffff;
+
+  border-color: #c46cff;
+
+  transform: rotate(45deg);
+
+  box-shadow:
+    0 0 16px rgba(138, 36, 255, 0.8);
+}
+
+
+/* =========================================================
+   TAG BADGE
+   ========================================================= */
+
+.tag-badge {
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.1em;
+
+  padding: 4px 10px;
+
+  border-radius: 12px;
+
+  background:
+    rgba(10, 9, 9, 0.463);
+
+  border:
+    1px solid rgba(138, 36, 255, 0.4);
+
+  color: #e0efff;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   MODAL OVERLAY
+   ========================================================= */
+
+.modal-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 100;
+
+  background-color:
+    rgba(4, 5, 14, 0.94);
+
+  background-image:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(138, 36, 255, 0.12) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 10% 90%,
+      rgba(90, 169, 255, 0.08) 0%,
+      transparent 50%
+    ),
+    linear-gradient(
+      rgba(90, 169, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(90, 169, 255, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size:
+    100% 100%,
+    100% 100%,
+    32px 32px,
+    32px 32px;
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+.modal-overlay.active {
+  opacity: 1;
+
+  pointer-events: auto;
+}
+
+
+/* =========================================================
+   MODAL CONTAINER
+   ========================================================= */
+
+.modal-container {
+  width: 100%;
+
+  max-width: 860px;
+
+  max-height: 88vh;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(14, 18, 36, 0.98),
+      rgba(6, 10, 22, 0.98)
+    );
+
+  border:
+    1px solid rgba(138, 36, 255, 0.4);
+
+  border-radius: 28px;
+
+  box-shadow:
+    0 25px 60px -15px
+      rgba(75, 0, 255, 0.4),
+    0 0 35px
+      rgba(90, 169, 255, 0.2);
+
+  overflow: hidden;
+
+  transform:
+    scale(0.92)
+    translateY(20px);
+
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+
+  position: relative;
+}
+
+
+/* =========================================================
+   MODAL SCROLL AREA
+   ========================================================= */
+
+.modal-scroll-area {
+  max-height: 88vh;
+
+  overflow-y: auto;
+
+  padding: 1.5rem;
+}
+
+
+@media (min-width: 640px) {
+
+  .modal-scroll-area {
+    padding: 2.5rem;
+  }
+
+}
+
+
+/* =========================================================
+   MODAL SCROLLBAR
+   ========================================================= */
+
+.modal-scroll-area::-webkit-scrollbar {
+  width: 6px;
+}
+
+
+.modal-scroll-area::-webkit-scrollbar-track {
+  background:
+    rgba(10, 15, 30, 0.6);
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  border-radius: 10px;
+}
+
+
+.modal-scroll-area::-webkit-scrollbar-thumb {
+  background:
+    linear-gradient(
+      180deg,
+      #5AA9FF,
+      #8A24FF
+    );
+
+  border-radius: 10px;
+}
+
+
+/* =========================================================
+   CASE STUDY BOX
+   ========================================================= */
+
+.case-section-box {
+  background:
+    rgba(12, 18, 38, 0.6);
+
+  border:
+    1px solid rgba(90, 169, 255, 0.15);
+
+  border-radius: 16px;
+
+  padding: 20px;
+
+  margin-bottom: 20px;
+
+  backdrop-filter: blur(8px);
+}
+
+
+/* =========================================================
+   CASE STUDY TITLE
+   ========================================================= */
+
+.case-badge-title {
+  font-family:
+    'Azonix',
+    'Inter',
+    sans-serif;
+
+  font-size: 13px;
+
+  color: #5AA9FF;
+
+  letter-spacing: 1px;
+
+  margin-bottom: 12px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+
+.case-badge-title::before {
+  content: '';
+
+  width: 6px;
+  height: 6px;
+
+  background: #8A24FF;
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 8px #8A24FF;
+}
+
+
+/* =========================================================
+   SCOPED UTILITY CLASSES
+   ========================================================= */
+
+.jg-blog-section .absolute {
+  position: absolute;
+}
+
+.jg-blog-section .relative {
+  position: relative;
+}
+
+.jg-blog-section .inset-0 {
+  inset: 0;
+}
+
+.jg-blog-section .top-4 {
+  top: 1rem;
+}
+
+.jg-blog-section .top-5 {
+  top: 1.25rem;
+}
+
+.jg-blog-section .right-4 {
+  right: 1rem;
+}
+
+.jg-blog-section .right-5 {
+  right: 1.25rem;
+}
+
+.jg-blog-section .z-10 {
+  z-index: 10;
+}
+
+.jg-blog-section .z-30 {
+  z-index: 30;
+}
+
+.jg-blog-section .block {
+  display: block;
+}
+
+.jg-blog-section .inline-flex {
+  display: inline-flex;
+}
+
+.jg-blog-section .flex {
+  display: flex;
+}
+
+.jg-blog-section .grid {
+  display: grid;
+}
+
+.jg-blog-section .flex-col {
+  flex-direction: column;
+}
+
+.jg-blog-section .flex-wrap {
+  flex-wrap: wrap;
+}
+
+.jg-blog-section .items-center {
+  align-items: center;
+}
+
+.jg-blog-section .items-start {
+  align-items: flex-start;
+}
+
+.jg-blog-section .justify-between {
+  justify-content: space-between;
+}
+
+.jg-blog-section .shrink-0 {
+  flex-shrink: 0;
+}
+
+.jg-blog-section .mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* =========================================================
+   WIDTH / HEIGHT
+   ========================================================= */
+
+.jg-blog-section .w-full {
+  width: 100%;
+}
+
+.jg-blog-section .h-full {
+  height: 100%;
+}
+
+.jg-blog-section .w-4 {
+  width: 1rem;
+}
+
+.jg-blog-section .h-4 {
+  height: 1rem;
+}
+
+.jg-blog-section .w-5 {
+  width: 1.25rem;
+}
+
+.jg-blog-section .h-5 {
+  height: 1.25rem;
+}
+
+.jg-blog-section .w-1\.5 {
+  width: .375rem;
+}
+
+.jg-blog-section .h-1\.5 {
+  height: .375rem;
+}
+
+
+/* =========================================================
+   MAX WIDTH
+   ========================================================= */
+
+.jg-blog-section .max-w-2xl {
+  max-width: 42rem;
+}
+
+.jg-blog-section .max-w-7xl {
+  max-width: 80rem;
+}
+
+.jg-blog-section .max-w-lg {
+  max-width: 32rem;
+}
+
+.jg-blog-section .max-w-md {
+  max-width: 28rem;
+}
+
+
+/* =========================================================
+   IMAGE / OVERFLOW
+   ========================================================= */
+
+.jg-blog-section .aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+.jg-blog-section .object-cover {
+  object-fit: cover;
+}
+
+.jg-blog-section .overflow-hidden {
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   BORDER RADIUS
+   ========================================================= */
+
+.jg-blog-section .rounded-full {
+  border-radius: 9999px;
+}
+
+.jg-blog-section .rounded-md {
+  border-radius: .375rem;
+}
+
+.jg-blog-section .rounded-lg {
+  border-radius: .5rem;
+}
+
+.jg-blog-section .rounded-xl {
+  border-radius: .75rem;
+}
+
+.jg-blog-section .rounded-2xl {
+  border-radius: 1rem;
+}
+
+
+/* =========================================================
+   PADDING
+   ========================================================= */
+
+.jg-blog-section .p-2 {
+  padding: .5rem;
+}
+
+.jg-blog-section .p-2\.5 {
+  padding: .625rem;
+}
+
+.jg-blog-section .p-3 {
+  padding: .75rem;
+}
+
+.jg-blog-section .p-4 {
+  padding: 1rem;
+}
+
+.jg-blog-section .px-3\.5 {
+  padding-left: .875rem;
+  padding-right: .875rem;
+}
+
+.jg-blog-section .px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.jg-blog-section .py-1\.5 {
+  padding-top: .375rem;
+  padding-bottom: .375rem;
+}
+
+.jg-blog-section .py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.jg-blog-section .pt-6 {
+  padding-top: 1.5rem;
+}
+
+.jg-blog-section .pb-4 {
+  padding-bottom: 1rem;
+}
+
+.jg-blog-section .pr-4 {
+  padding-right: 1rem;
+}
+
+
+/* =========================================================
+   MARGINS
+   ========================================================= */
+
+.jg-blog-section .mb-0\.5 {
+  margin-bottom: .125rem;
+}
+
+.jg-blog-section .mb-1 {
+  margin-bottom: .25rem;
+}
+
+.jg-blog-section .mb-2 {
+  margin-bottom: .5rem;
+}
+
+.jg-blog-section .mb-3 {
+  margin-bottom: .75rem;
+}
+
+.jg-blog-section .mb-4 {
+  margin-bottom: 1rem;
+}
+
+.jg-blog-section .mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.jg-blog-section .mb-8 {
+  margin-bottom: 2rem;
+}
+
+.jg-blog-section .mb-12 {
+  margin-bottom: 3rem;
+}
+
+.jg-blog-section .mt-2 {
+  margin-top: .5rem;
+}
+
+.jg-blog-section .mt-3 {
+  margin-top: .75rem;
+}
+
+.jg-blog-section .mt-8 {
+  margin-top: 2rem;
+}
+
+
+/* =========================================================
+   GAP
+   ========================================================= */
+
+.jg-blog-section .gap-2 {
+  gap: .5rem;
+}
+
+.jg-blog-section .gap-3 {
+  gap: .75rem;
+}
+
+.jg-blog-section .gap-6 {
+  gap: 1.5rem;
+}
+
+
+/* =========================================================
+   VERTICAL SPACING
+   ========================================================= */
+
+.jg-blog-section .space-y-2 > * + * {
+  margin-top: .5rem;
+}
+
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+.jg-blog-section .grid-cols-1 {
+  grid-template-columns:
+    repeat(1, minmax(0, 1fr));
+}
+
+.jg-blog-section .grid-cols-2 {
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+}
+
+
+/* =========================================================
+   FONT WEIGHT
+   ========================================================= */
+
+.jg-blog-section .font-bold {
+  font-weight: 700;
+}
+
+.jg-blog-section .font-medium {
+  font-weight: 500;
+}
+
+.jg-blog-section .font-normal {
+  font-weight: 400;
+}
+
+.jg-blog-section .font-semibold {
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   TEXT ALIGNMENT
+   ========================================================= */
+
+.jg-blog-section .text-left {
+  text-align: left;
+}
+
+.jg-blog-section .text-center {
+  text-align: center;
+}
+
+.jg-blog-section .italic {
+  font-style: italic;
+}
+
+
+/* =========================================================
+   FONT SIZE
+   ========================================================= */
+
+.jg-blog-section .text-xs {
+  font-size: .75rem;
+  line-height: 1rem;
+}
+
+.jg-blog-section .text-sm {
+  font-size: .875rem;
+  line-height: 1.25rem;
+}
+
+.jg-blog-section .text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.jg-blog-section .text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.jg-blog-section .text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+
+/* =========================================================
+   LINE HEIGHT
+   ========================================================= */
+
+.jg-blog-section .leading-relaxed {
+  line-height: 1.625;
+}
+
+.jg-blog-section .leading-snug {
+  line-height: 1.375;
+}
+
+.jg-blog-section .leading-tight {
+  line-height: 1.25;
+}
+
+
+/* =========================================================
+   LETTER SPACING
+   ========================================================= */
+
+.jg-blog-section .tracking-wide {
+  letter-spacing: .025em;
+}
+
+.jg-blog-section .tracking-wider {
+  letter-spacing: .05em;
+}
+
+.jg-blog-section .tracking-widest {
+  letter-spacing: .1em;
+}
+
+
+/* =========================================================
+   TEXT COLORS
+   ========================================================= */
+
+.jg-blog-section .text-white {
+  color: #fff;
+}
+
+.jg-blog-section .text-slate-200 {
+  color: #e2e8f0;
+}
+
+.jg-blog-section .text-slate-300 {
+  color: #cbd5e1;
+}
+
+.jg-blog-section .text-slate-400 {
+  color: #94a3b8;
+}
+
+.jg-blog-section .text-slate-500 {
+  color: #64748b;
+}
+
+.jg-blog-section .text-slate-950 {
+  color: #020617;
+}
+
+.jg-blog-section .text-cyan-200 {
+  color: #a5f3fc;
+}
+
+.jg-blog-section .text-cyan-300 {
+  color: #67e8f9;
+}
+
+.jg-blog-section .text-emerald-300 {
+  color: #6ee7b7;
+}
+
+.jg-blog-section .text-emerald-400 {
+  color: #34d399;
+}
+
+.jg-blog-section .text-purple-300 {
+  color: #d8b4fe;
+}
+
+.jg-blog-section .text-\[\#5AA9FF\] {
+  color: #5AA9FF;
+}
+
+
+/* =========================================================
+   BACKGROUND COLORS
+   ========================================================= */
+
+.jg-blog-section .bg-white {
+  background: #fff;
+}
+
+.jg-blog-section .bg-cyan-400 {
+  background: #22d3ee;
+}
+
+.jg-blog-section .bg-cyan-950\/20 {
+  background: rgba(8, 47, 73, .2);
+}
+
+.jg-blog-section .bg-slate-800\/80 {
+  background: rgba(30, 41, 59, .8);
+}
+
+.jg-blog-section .bg-slate-900\/50 {
+  background: rgba(15, 23, 42, .5);
+}
+
+.jg-blog-section .bg-slate-900\/60 {
+  background: rgba(15, 23, 42, .6);
+}
+
+.jg-blog-section .bg-slate-900\/80 {
+  background: rgba(15, 23, 42, .8);
+}
+
+.jg-blog-section .bg-slate-900\/90 {
+  background: rgba(15, 23, 42, .9);
+}
+
+.jg-blog-section .bg-\[\#00E5FF\] {
+  background: #00E5FF;
+}
+
+.jg-blog-section .bg-\[\#031B4E\] {
+  background: #031B4E;
+}
+
+.jg-blog-section .bg-\[\#2ECC71\] {
+  background: #2ECC71;
+}
+
+
+/* =========================================================
+   BORDERS
+   ========================================================= */
+
+.jg-blog-section .border {
+  border-width: 1px;
+  border-style: solid;
+}
+
+.jg-blog-section .border-b {
+  border-bottom-width: 1px;
+}
+
+.jg-blog-section .border-t {
+  border-top-width: 1px;
+}
+
+.jg-blog-section .border-l-2 {
+  border-left-width: 2px;
+}
+
+.jg-blog-section .border-slate-800 {
+  border-color: #1e293b;
+}
+
+.jg-blog-section .border-slate-800\/80 {
+  border-color: rgba(30, 41, 59, .8);
+}
+
+.jg-blog-section .border-slate-700\/50 {
+  border-color: rgba(51, 65, 85, .5);
+}
+
+.jg-blog-section .border-cyan-400 {
+  border-color: #22d3ee;
+}
+
+.jg-blog-section .border-cyan-400\/30 {
+  border-color: rgba(34, 211, 238, .3);
+}
+
+.jg-blog-section .border-cyan-500\/40 {
+  border-color: rgba(6, 182, 212, .4);
+}
+
+.jg-blog-section .border-purple-500\/30 {
+  border-color: rgba(168, 85, 247, .3);
+}
+
+
+/* =========================================================
+   EFFECTS
+   ========================================================= */
+
+.jg-blog-section .backdrop-blur-md {
+  backdrop-filter: blur(12px);
+}
+
+.jg-blog-section .transition-colors {
+  transition:
+    color .2s,
+    background-color .2s,
+    border-color .2s;
+}
+
+.jg-blog-section .drop-shadow-md {
+  filter:
+    drop-shadow(
+      0 4px 3px rgba(0, 0, 0, .07)
+    );
+}
+
+.jg-blog-section .opacity-75 {
+  opacity: .75;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.jg-blog-section .hover\:text-white:hover {
+  color: #fff;
+}
+
+.jg-blog-section .hover\:bg-slate-700:hover {
+  background: #334155;
+}
+
+
+/* =========================================================
+   SHADOWS
+   ========================================================= */
+
+.jg-blog-section .shadow-\[0_0_15px_rgba\(90\,169\,255\,0\.15\)\] {
+  box-shadow:
+    0 0 15px rgba(90, 169, 255, .15);
+}
+
+.jg-blog-section .shadow-\[0_0_30px_rgba\(0\,229\,255\,0\.2\)\] {
+  box-shadow:
+    0 0 30px rgba(0, 229, 255, .2);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (min-width: 640px) {
+
+  .jg-blog-section .sm\:grid-cols-2 {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .jg-blog-section .sm\:grid-cols-3 {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+
+  .jg-blog-section .sm\:grid-cols-4 {
+    grid-template-columns:
+      repeat(4, minmax(0, 1fr));
+  }
+
+  .jg-blog-section .sm\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .jg-blog-section .sm\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .jg-blog-section .sm\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .jg-blog-section .sm\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .jg-blog-section .sm\:text-sm {
+    font-size: .875rem;
+    line-height: 1.25rem;
+  }
+
+  .jg-blog-section .sm\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .jg-blog-section .sm\:pr-8 {
+    padding-right: 2rem;
+  }
+
+}
+
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media (min-width: 1024px) {
+
+  .jg-blog-section .lg\:grid-cols-4 {
+    grid-template-columns:
+      repeat(4, minmax(0, 1fr));
+  }
+
+  .jg-blog-section .lg\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE — BLOG SPACING FIX
+   ========================================================= */
+
+@media (max-width: 639px) {
+
+  .jg-blog-section {
+    padding-top: 70px !important;
+    padding-bottom: 80px !important;
+  }
+
+  .jg-blog-section > .max-w-7xl {
+    width: 90%;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .jg-blog-section {
+    padding-top: 60px !important;
+    padding-bottom: 70px !important;
+  }
+
+  .jg-blog-section > .max-w-7xl {
+    width: 91%;
+  }
+
+}
+
+
+/* =========================================================
+   FINAL OVERFLOW / FLOW FIX
+   ========================================================= */
+
+/*
+ * Keeps the Blog section in normal document flow and prevents
+ * the heading/badge from visually escaping into the section above.
+ */
+
+.jg-blog-section {
+  isolation: isolate;
+}
+
+.jg-blog-section > .max-w-7xl {
+  position: relative;
+  z-index: 1;
+}
