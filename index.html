@@ -52,11 +52,28 @@
     >
 
 
+    <!-- Contact Section Tailwind Utilities (scoped to #contact, no preflight) -->
+    <script>
+        tailwind = {
+            config: {
+                corePlugins: { preflight: false },
+                important: '#contact'
+            }
+        };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <!-- Main CSS -->
 
     <link
         rel="stylesheet"
         href="style.css"
+    >
+
+    <!-- Contact Section CSS -->
+    <link
+        rel="stylesheet"
+        href="contact-section.css"
     >
 
 
@@ -1619,83 +1636,181 @@
                      CONTACT / CTA
                 ========================================== -->
 
-                <section
-                    class="section cta"
-                    id="contact"
-                >
-
-
-                    <div>
-
-
-                        <p class="eyebrow">
-                            HAVE A PROJECT IN MIND?
-                        </p>
-
-
-                        <h2>
-
-                            Let’s create something
-                            <span>
-                                meaningful.
-                            </span>
-
-                        </h2>
-
-
-                        <p>
-
-                            Have an idea, a brand or a product
-                            that needs better visuals?
-                            Let’s turn it into something
-                            people remember.
-
-                        </p>
-
-
-                        <div class="actions">
-
-
-                            <a
-                                class="primary-btn"
-                                href="mailto:jabirgfx.shanto@gmail.com"
-                            >
-                                Start a Project →
-                            </a>
-
-
-                            <a
-                                class="secondary-btn"
-                                href="mailto:jabirgfx.shanto@gmail.com"
-                            >
-
-                                <img
-    src="assets/email.png"
-    alt="Email"
->
-&nbsp;
-jabirgfx.shanto@gmail.com
-
-                            </a>
-
-
+                
+<!-- =========================================
+     CONTACT / CTA — REPLACED SECTION
+========================================== -->
+<section id="contact" class="contact-section relative overflow-hidden bg-[#02040a] text-slate-100 min-h-screen flex flex-col antialiased">
+    <div class="absolute inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="absolute inset-0 bg-grid-pattern opacity-90 pointer-events-none"></div>
+        <div class="blob-purple absolute -bottom-28 -left-28 w-[600px] h-[600px] rounded-full pointer-events-none opacity-80"></div>
+        <div class="blob-cyan absolute -top-28 -right-28 w-[550px] h-[550px] rounded-full pointer-events-none opacity-75"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[650px] bg-blue-900/10 blur-[140px] pointer-events-none"></div>
+    </div>
+    <div class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-8 lg:px-16 lg:py-12 flex flex-col justify-center relative z-10">
+        <div class="relative w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+<div class="lg:col-span-5 flex flex-col justify-between space-y-6 text-left h-full py-0">
+<div class="space-y-4">
+<!-- Status Badge Capsule (AZONIX FONT) -->
+<div class="inline-flex items-center space-x-3 px-4 py-2 rounded-full bg-[#0a1224]/90 border border-cyan-500/40 shadow-lg shadow-cyan-500/10 -mt-6 sm:-mt-8 mb-1">
+<span class="relative flex h-2.5 w-2.5 shrink-0">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-400"></span>
+</span>
+<div class="text-[10px] sm:text-[11px] font-azonix tracking-wider text-cyan-400 leading-none text-left uppercase" id="display-statusText">
+                            CONTACT ME
                         </div>
+</div>
+<!-- Main Headline (AZONIX FONT) -->
+<h1 class="text-2xl sm:text-3xl lg:text-[2.2rem] font-azonix text-white leading-[1.25] tracking-wide my-1">
+<h1 class="contact-headline">
+    IDEAS INTO<span class="text-neon-gradient"> VISUALS</span>
+</h1>
+<!-- Body Paragraph -->
+<p class="text-xs sm:text-sm text-slate-300/85 leading-relaxed font-normal max-w-md pt-0.5" id="display-description">
+                        Have a project in mind or looking for a creative designer? Let's turn your idea into a clean, impactful visual experience.
+                    </p>
+</div>
+<!-- ENHANCED CREATIVE QUICK CONNECT CONTAINER -->
+<div class="contact-box-container rounded-2xl sm:rounded-3xl p-4 sm:p-5 relative overflow-hidden max-w-md">
+<!-- Top Section Title -->
+<div class="flex items-center justify-between pb-3 mb-3 border-b border-white/10">
+<div class="flex items-center space-x-2">
+<span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+<span class="text-[11px] font-bold font-inter tracking-widest text-cyan-400/90 uppercase">QUICK DIRECT CONNECT</span>
+</div>
+<span class="text-[9px] font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-md">● ONLINE</span>
+</div>
+<div class="space-y-2.5">
+<!-- 1. Email Channel (Full Width) -->
+<div class="minimal-chip-email rounded-xl p-3 cursor-pointer flex items-center justify-between group relative overflow-hidden" onclick="copyEmailToClipboard()">
+<!-- Subtle Glow -->
+<div class="absolute right-0 top-0 bottom-0 w-28 bg-gradient-to-l from-cyan-500/15 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="flex items-center space-x-3 min-w-0 z-10">
+<div class="w-8 h-8 rounded-lg bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shrink-0 group-hover:bg-cyan-500 group-hover:text-slate-950 transition-all shadow-sm shadow-cyan-500/20">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.272H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L12 9.545l8.073-6.052C21.69 2.28 24 3.434 24 5.457z"></path></svg>
+</div>
+<div class="text-left truncate">
+<div class="text-[11px] font-bold font-inter uppercase tracking-wider text-slate-200 group-hover:text-cyan-300 transition-colors">EMAIL</div>
+</div>
+</div>
+<div class="flex items-center space-x-2 z-10">
+<span class="text-[9px] font-semibold text-cyan-400 bg-cyan-500/15 px-2 py-0.5 rounded border border-cyan-500/30 group-hover:bg-cyan-400 group-hover:text-slate-950 transition-all">COPY EMAIL</span>
+<div class="text-slate-400 group-hover:text-cyan-400 transition-colors shrink-0">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg>
+</div>
+</div>
+</div>
+<!-- 2 & 3. WhatsApp & Messenger Row (Side-by-side) -->
+<div class="grid grid-cols-2 gap-2.5">
+<!-- WhatsApp Chip -->
+<a class="minimal-chip-wa rounded-xl p-3 cursor-pointer flex items-center justify-between group relative overflow-hidden" href="https://wa.me/8801700000000" id="link-whatsapp" rel="noopener noreferrer" target="_blank">
+<div class="flex items-center space-x-2.5 min-w-0 z-10">
+<div class="w-7 h-7 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0 group-hover:bg-emerald-500 group-hover:text-slate-950 transition-all shadow-sm shadow-emerald-500/20">
+<svg class="w-3.5 h-3.5 fill-current" viewbox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm5.8 14.17c-.24.68-1.2 1.25-1.96 1.41-.52.11-1.2.2-3.48-.75-2.92-1.21-4.8-4.18-4.95-4.38-.14-.19-1.18-1.57-1.18-3 0-1.43.74-2.13 1.01-2.42.27-.29.59-.36.79-.36.2 0 .4 0 .57.01.18.01.43-.07.67.51.24.58.83 2.03.9 2.18.07.15.12.33.02.52-.1.2-.15.32-.3.5-.15.18-.32.4-.46.54-.15.15-.31.31-.13.61.18.3 0.8 1.32 1.71 2.13 1.18 1.05 2.18 1.38 2.48 1.53.3.15.48.13.66-.08.18-.21.78-.91.99-1.22.21-.31.42-.26.71-.15.29.11 1.86.88 2.18 1.04.32.16.54.24.62.38.08.14.08.82-.16 1.5z"></path></svg>
+</div>
+<div class="text-left truncate">
+<div class="text-[10px] font-bold font-inter uppercase tracking-wider text-slate-200 group-hover:text-emerald-300 transition-colors">WHATSAPP</div>
+</div>
+</div>
+<div class="text-slate-400 group-hover:text-emerald-400 transition-colors shrink-0 ml-1 z-10">
+<svg class="w-3.5 h-3.5 fill-current" viewbox="0 0 24 24"><path d="M5 4v2h10.59L3.29 18.29l1.41 1.41L17 7.41V18h2V4S5 4 5 4z"></path></svg>
+</div>
+</a>
+<!-- Messenger Chip -->
+<a class="minimal-chip-msg rounded-xl p-3 cursor-pointer flex items-center justify-between group relative overflow-hidden" href="https://m.me/jabirgfx" id="link-messenger" rel="noopener noreferrer" target="_blank">
+<div class="flex items-center space-x-2.5 min-w-0 z-10">
+<div class="w-7 h-7 rounded-lg bg-purple-500/15 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0 group-hover:bg-purple-500 group-hover:text-slate-950 transition-all shadow-sm shadow-purple-500/20">
+<svg class="w-3.5 h-3.5 fill-current" viewbox="0 0 24 24"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.43 3.16 7.17V22l3.03-1.66c1.17.32 2.43.5 3.81.5 5.64 0 10-4.13 10-9.7C22 6.13 17.64 2 12 2zm1.09 13.09l-2.54-2.71-4.96 2.71 5.45-5.79 2.58 2.71 4.92-2.71-5.45 5.79z"></path></svg>
+</div>
+<div class="text-left truncate">
+<div class="text-[10px] font-bold font-inter uppercase tracking-wider text-slate-200 group-hover:text-purple-300 transition-colors">MESSENGER</div>
+</div>
+</div>
+<div class="text-slate-400 group-hover:text-purple-400 transition-colors shrink-0 ml-1 z-10">
+<svg class="w-3.5 h-3.5 fill-current" viewbox="0 0 24 24"><path d="M5 4v2h10.59L3.29 18.29l1.41 1.41L17 7.41V18h2V4S5 4 5 4z"></path></svg>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-7 h-full">
+<div class="glass-card-glow rounded-2xl sm:rounded-3xl p-6 sm:p-8 relative overflow-hidden h-full flex flex-col justify-between">
+<!-- Form Header Bar -->
+<div class="mb-4 text-left space-y-2">
+<div class="flex items-center space-x-2.5">
+<span class="relative flex h-2 w-2 shrink-0">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-400"></span>
+</span>
+<div class="text-left font-inter font-bold uppercase text-[10px] sm:text-[11px] tracking-[0.18em] leading-tight text-cyan-400 whitespace-nowrap">
+                                SEND ME A MESSAGE
+                            </div>
+</div>
+<h2 class="text-xl sm:text-2xl font-azonix text-white tracking-wide leading-snug">
+                            LET'S WORK <span class="text-neon-gradient">TOGETHER.</span>
+</h2>
+</div>
+<!-- Interactive Form Inputs -->
+<form class="flex-1 flex flex-col justify-between space-y-4 text-left" onsubmit="handleFormSubmit(event)">
+<!-- Row 1: Name & Email -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+<!-- Your Name Input -->
+<div>
+<label class="text-[10px] font-bold font-inter text-slate-300 uppercase tracking-wider block mb-1">YOUR NAME</label>
+<div class="relative">
+<svg class="w-4 h-4 fill-slate-500 absolute left-3.5 top-3 pointer-events-none" viewbox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path></svg>
+<input class="custom-input font-inter w-full rounded-xl pl-9 pr-3.5 py-2.5 text-xs text-white placeholder-slate-500" id="input-name" placeholder="John Doe" required="" type="text"/>
+</div>
+</div>
+<!-- Your Email Input -->
+<div>
+<label class="text-[10px] font-bold font-inter text-slate-300 uppercase tracking-wider block mb-1">YOUR EMAIL</label>
+<div class="relative">
+<svg class="w-4 h-4 fill-slate-500 absolute left-3.5 top-3 pointer-events-none" viewbox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.272H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L12 9.545l8.073-6.052C21.69 2.28 24 3.434 24 5.457z"></path></svg>
+<input class="custom-input font-inter w-full rounded-xl pl-9 pr-3.5 py-2.5 text-xs text-white placeholder-slate-500" id="input-email" placeholder="john@email.com" required="" type="email"/>
+</div>
+</div>
+</div>
+<!-- Row 2: Interactive Service Quick Pills -->
+<div>
+<div class="flex items-center justify-between mb-1.5">
+<label class="text-[10px] font-bold font-inter text-slate-300 uppercase tracking-wider block">PROJECT TYPE</label>
+<span class="text-[9px] font-medium text-slate-400">Quick Select:</span>
+</div>
+<!-- Clickable Interactive Service Pills -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-2">
+<button class="tag-pill active px-2.5 py-1.5 rounded-lg text-[10px] font-semibold text-slate-300 text-center truncate" onclick="selectServicePill('Brand Identity', this)" type="button">🎨 Brand Identity</button>
+<button class="tag-pill px-2.5 py-1.5 rounded-lg text-[10px] font-semibold text-slate-300 text-center truncate" onclick="selectServicePill('Social Media', this)" type="button">💻 Social Media</button>
+<button class="tag-pill px-2.5 py-1.5 rounded-lg text-[10px] font-semibold text-slate-300 text-center truncate" onclick="selectServicePill('E-commerce', this)" type="button">🚀 E-commerce</button>
+<button class="tag-pill px-2.5 py-1.5 rounded-lg text-[10px] font-semibold text-slate-300 text-center truncate" onclick="selectServicePill('Label Print', this)" type="button">🎥 Label Print</button>
+</div>
+<input id="input-service" type="hidden" value="Visual Identity"/>
+</div>
+<!-- Row 3: Tell Me About Your Project -->
+<div class="flex-1 flex flex-col">
+<label class="text-[10px] font-bold font-inter text-slate-300 uppercase tracking-wider block mb-1">TELL ME ABOUT YOUR PROJECT</label>
+<div class="relative flex-1">
+<svg class="w-4 h-4 fill-slate-500 absolute left-3.5 top-3 pointer-events-none" viewbox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"></path></svg>
+<textarea class="custom-input font-inter w-full h-full rounded-xl pl-9 pr-3.5 py-2.5 text-xs text-white placeholder-slate-500 resize-none" id="input-message" placeholder="Tell me a little about your project goals, timeline, or idea..." required="" rows="2"></textarea>
+</div>
+</div>
+<!-- Submit Button -->
+<div class="flex justify-center pt-2">
+<button class="btn-neon-gradient shimmer-btn px-8 sm:px-12 py-3.5 rounded-full text-white font-bold font-inter text-xs tracking-wider uppercase flex items-center justify-center space-x-2.5 shadow-lg shadow-purple-600/30" type="submit">
+<span class="whitespace-nowrap">SEND PROJECT INQUIRY</span>
+<svg class="w-4 h-4 fill-current ml-0.5" viewbox="0 0 24 24"><path d="M5 4v2h10.59L3.29 18.29l1.41 1.41L17 7.41V18h2V4S5 4 5 4z"></path></svg>
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+    </div>
+    <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2 pointer-events-none"></div>
+</section>
 
-
-                    </div>
-
-
-                    <div class="cta-mark">
-
-                        <img
-                            src="assets/favicon.png"
-                            alt="JabirGFX Logo"
-                        >
-
-                    </div>
-
-
-                </section>
 
 
 
@@ -1855,6 +1970,9 @@ jabirgfx.shanto@gmail.com
     ========================================== -->
 
     <script src="script.js"></script>
+
+    <!-- Contact Section JS -->
+    <script src="contact-section.js"></script>
 
 
 
