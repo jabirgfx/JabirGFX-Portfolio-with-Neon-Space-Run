@@ -868,6 +868,10 @@ select {
    MAIN HEADING
 ========================================================= */
 
+/* =========================================================
+   ABOUT ME — MAIN HEADING FIX
+========================================================= */
+
 .about-content h1 {
     max-width: 710px;
     margin: 0;
@@ -1846,6 +1850,7 @@ select {
         font-size: 11px;
     }
 }
+
 
 /* =========================
    REDUCED MOTION
@@ -5071,6 +5076,7 @@ body {
    Namespaced to avoid conflicts with the existing portfolio.
 ========================================================= */
 
+
 .nsr-game-section {
     position: relative;
     width: 100%;
@@ -5549,7 +5555,7 @@ body {
    Same continuous background on smaller screens
 ========================================================= */
 
-@media (max-width: 700px)
+@media (max-width: 700px) 
 
 
     .site-background {
