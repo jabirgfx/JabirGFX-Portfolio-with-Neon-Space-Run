@@ -5073,34 +5073,45 @@ body {
 
 .nsr-game-section {
     position: relative;
+    width: 100%;
+    max-width: none;
+    margin: 0;
     overflow: hidden;
-    padding-top: 90px;
-    padding-bottom: 90px;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: border-box;
 }
 
 .nsr-game-shell {
     position: relative;
+    width: 100%;
+    max-width: none;
+    margin: 0;
     min-height: 430px;
-    border: 1px solid rgba(126, 93, 255, 0.28);
-    border-radius: 28px;
     overflow: hidden;
     isolation: isolate;
     background: #030714;
     box-shadow:
         0 30px 90px rgba(0, 0, 0, 0.45),
         inset 0 0 80px rgba(57, 31, 150, 0.10);
+    box-sizing: border-box;
 }
+
 
 .nsr-game-visual {
     position: absolute;
     inset: 0;
     z-index: -2;
+
     background:
         linear-gradient(90deg,
-            rgba(3, 7, 20, 0.98) 0%,
-            rgba(3, 7, 20, 0.82) 35%,
-            rgba(3, 7, 20, 0.18) 72%,
-            rgba(3, 7, 20, 0.04) 100%),
+            rgba(3, 7, 20, 0.99) 0%,
+            rgba(3, 7, 20, 0.92) 35%,
+            rgba(3, 7, 20, 0.55) 72%,
+            rgba(3, 7, 20, 0.35) 100%
+        ),
         url("assets/neon-space-run-banner.png") center center / cover no-repeat;
 }
 
